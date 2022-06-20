@@ -4,7 +4,6 @@ import "../styles/Search.css";
 import { ToggleColumns } from "./ToggleColumns";
 import { ProductList } from "./ProductList";
 import { FilterForm } from "./FilterForm";
-import products from "../assets/products.json";
 
 export const Search = (props) => {
   const [price, setPrice] = useState({ priceFrom: 0, priceTo: Infinity });
@@ -17,7 +16,7 @@ export const Search = (props) => {
     currency: true
   });
 
-  const [displayedProducts, setDisplayedProducts] = useState(products);
+  const [displayedProducts, setDisplayedProducts] = useState(props.products);
 
   const onPriceInputChange = (name, value) => {
     setPrice((price) => ({ ...price, [name]: value }), filterProducts());
@@ -29,7 +28,7 @@ export const Search = (props) => {
 
   const filterProducts = () => {
     setDisplayedProducts(
-      products.filter(
+      props.products.filter(
         (product) =>
           product.price >= price.priceFrom && product.price <= price.priceTo
       )

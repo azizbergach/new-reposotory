@@ -4,7 +4,7 @@ export const FilterForm = (props) => {
   const onPriceInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    props.onPriceInputChange(name, parseInt(value));
+    props.onPriceInputChange(name, Number(value));
   };
 
   return (
